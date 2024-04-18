@@ -1,0 +1,16 @@
+# docker-compose.yml
+# docker-compose up -d
+version: '3.8'
+services:
+  mariadb-11.0.1:
+    image: mariadb:11.0.1-rc
+    container_name: mariadb-11.0.1
+    ports:
+      - 3307:3306
+    volumes:
+      - /c/Users/Qone/repositories/docker/mount/mariadb-11.0.1/data:/var/lib/mysql
+      - /c/Users/Qone/repositories/docker/mount/mariadb-11.0.1/conf:/etc/mysql/conf.d
+      - /c/Users/Qone/repositories/docker/mount/mariadb-11.0.1/backup:/root/backup
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      TZ: "Asia/Seoul"
