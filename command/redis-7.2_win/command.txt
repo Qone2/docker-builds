@@ -1,0 +1,7 @@
+docker run --name redis-7.2 -d -v /mnt/c/Users/Qone/repositories/docker/mount/redis-7.2/data:/data -v /mnt/c/Users/Qone/repositories/docker/mount/redis-7.2/redis.conf:/usr/local/etc/redis/redis.conf -p 6379:6379 redis:7.2 redis-server /usr/local/etc/redis/redis.conf
+
+docker run --name redis-7.2 -d -v /mnt/c/Users/Qone/repositories/docker/mount/redis-7.2/data:/data -p 6379:6379 redis:7.2
+
+docker run --name redis-7.2 -d -v /mnt/c/Users/Qone/repositories/docker/mount/redis-7.2/data:/data -v /mnt/c/Users/Qone/repositories/docker/mount/redis-7.2/conf:/usr/local/etc/redis -p 6379:6379 redis:7.2 redis-server /usr/local/etc/redis/redis.conf
+
+docker exec -it redis-7.2 bash
