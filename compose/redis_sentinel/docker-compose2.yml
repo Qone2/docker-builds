@@ -1,0 +1,23 @@
+# docker-compose up -d
+name: redis-server2
+services:
+  redis2: 
+    container_name: redis2
+    image: redis:latest
+    ports:
+      - "6380:6379"
+    volumes:
+      - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/redis2.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+    network_mode: bridge
+  sentinel2:
+    container_name: sentinel2
+    image: redis:latest
+    ports:
+      - "5001:26379"
+    volumes:
+      - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/sentinel2.conf:/usr/local/etc/redis/redis.conf
+    command: redis-sentinel /usr/local/etc/redis/redis.conf
+    network_mode: bridge
+    depends_on:
+      - redis2
