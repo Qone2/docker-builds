@@ -6,6 +6,9 @@ EXPOSE 5002
 ENTRYPOINT ["sh", "-c"]
 CMD ["redis-server /usr/local/etc/redis/redis.conf & redis-sentinel /usr/local/etc/redis/sentinel.conf"]
 # docker build -t mysuperimage -f MyDockerfile .
-# docker build -t redis-server2 -f redis-server2/Dockerfile redis-server2
-# docker run -d --name redis-server2 redis-server2
-# docker run -d --name redis-server2 -v /mnt/c/Users/Qone/repositories/docker/logs/redis-server2/:/data/ redis-server2
+# docker build -t redis-server3 -f redis-server3/Dockerfile redis-server3
+# docker run -d --name redis-server3 redis-server3
+# docker run -d --name redis-server3 -v /mnt/c/Users/Qone/repositories/docker/logs/redis-server3/:/data/ redis-server3
+# docker run -d --name redis-server3 -v /mnt/c/Users/Qone/repositories/docker/logs/redis-server3/:/data/ --network bridge redis-server3
+# docker run -d --name redis-server3 -v /mnt/c/Users/Qone/repositories/docker/logs/redis-server3/:/data/ --network host redis-server3
+# docker run -d --name redis-server3 --network bridge -p 6381:6381 -p 5002:5002 redis-server3

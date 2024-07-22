@@ -5,7 +5,7 @@ services:
     container_name: redis2
     image: redis:latest
     ports:
-      - "6380:6379"
+      - "6380:6380"
     volumes:
       - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/redis2.conf:/usr/local/etc/redis/redis.conf
     command: redis-server /usr/local/etc/redis/redis.conf
@@ -14,7 +14,7 @@ services:
     container_name: sentinel2
     image: redis:latest
     ports:
-      - "5001:26379"
+      - "5001:5001"
     volumes:
       - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/sentinel2.conf:/usr/local/etc/redis/redis.conf
     command: redis-sentinel /usr/local/etc/redis/redis.conf

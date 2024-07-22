@@ -14,7 +14,7 @@ services:
     container_name: sentinel1
     image: redis:latest
     ports:
-      - "5000:26379"
+      - "5000:5000"
     volumes:
       - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/sentinel1.conf:/usr/local/etc/redis/redis.conf
     command: redis-sentinel /usr/local/etc/redis/redis.conf
