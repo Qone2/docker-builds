@@ -10,7 +10,7 @@ services:
     volumes:
       - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/redis1.conf:/usr/local/etc/redis/redis.conf
     command: redis-server /usr/local/etc/redis/redis.conf
-    network_mode: bridge
+    network_mode: host
   redis2: 
     container_name: redis2
     image: redis:latest
@@ -19,7 +19,7 @@ services:
     volumes:
       - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/redis2.conf:/usr/local/etc/redis/redis.conf
     command: redis-server /usr/local/etc/redis/redis.conf
-    network_mode: bridge
+    network_mode: host
     depends_on:
       - redis1
   redis3: 
@@ -30,7 +30,7 @@ services:
     volumes:
       - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/redis3.conf:/usr/local/etc/redis/redis.conf
     command: redis-server /usr/local/etc/redis/redis.conf
-    network_mode: bridge
+    network_mode: host
     depends_on:
       - redis2
   sentinel1:
@@ -41,7 +41,7 @@ services:
     volumes:
       - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/sentinel1.conf:/usr/local/etc/redis/redis.conf
     command: redis-sentinel /usr/local/etc/redis/redis.conf
-    network_mode: bridge
+    network_mode: host
     depends_on:
       - redis3
   sentinel2:
@@ -52,7 +52,7 @@ services:
     volumes:
       - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/sentinel2.conf:/usr/local/etc/redis/redis.conf
     command: redis-sentinel /usr/local/etc/redis/redis.conf
-    network_mode: bridge
+    network_mode: host
     depends_on:
       - sentinel1
   sentinel3:
@@ -63,7 +63,7 @@ services:
     volumes:
       - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/sentinel3.conf:/usr/local/etc/redis/redis.conf
     command: redis-sentinel /usr/local/etc/redis/redis.conf
-    network_mode: bridge
+    network_mode: host
     depends_on:
       - sentinel2
 
