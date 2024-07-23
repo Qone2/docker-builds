@@ -1,0 +1,69 @@
+# docker-compose up -d
+# docker-compose -f filename up -d
+name: redis-sentinel
+services:
+  redis1: 
+    container_name: redis1
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/redis1.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+    network_mode: bridge
+  redis2: 
+    container_name: redis2
+    image: redis:latest
+    ports:
+      - "6380:6380"
+    volumes:
+      - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/redis2.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+    network_mode: bridge
+    depends_on:
+      - redis1
+  redis3: 
+    container_name: redis3
+    image: redis:latest
+    ports:
+      - "6381:6381"
+    volumes:
+      - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/redis3.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+    network_mode: bridge
+    depends_on:
+      - redis2
+  sentinel1:
+    container_name: sentinel1
+    image: redis:latest
+    ports:
+      - "5000:5000"
+    volumes:
+      - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/sentinel1.conf:/usr/local/etc/redis/redis.conf
+    command: redis-sentinel /usr/local/etc/redis/redis.conf
+    network_mode: bridge
+    depends_on:
+      - redis3
+  sentinel2:
+    container_name: sentinel2
+    image: redis:latest
+    ports:
+      - "5001:5001"
+    volumes:
+      - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/sentinel2.conf:/usr/local/etc/redis/redis.conf
+    command: redis-sentinel /usr/local/etc/redis/redis.conf
+    network_mode: bridge
+    depends_on:
+      - sentinel1
+  sentinel3:
+    container_name: sentinel3
+    image: redis:latest
+    ports:
+      - "5002:5002"
+    volumes:
+      - /mnt/c/Users/Qone/repositories/docker/configs/config-file/redis_sentinel/sentinel3.conf:/usr/local/etc/redis/redis.conf
+    command: redis-sentinel /usr/local/etc/redis/redis.conf
+    network_mode: bridge
+    depends_on:
+      - sentinel2
+
